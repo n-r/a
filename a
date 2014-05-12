@@ -1,0 +1,372 @@
+Terminology:
+
+The "{" and "}" symbols are known as braces (like the things that go on 
+teeth).
+
+> If statements:
+
+Form: if(){}
+
+Put something between the parentheses and something between the braces. 
+When the computer gets to that part of the program, it first runs 
+whatever is in the parentheses. It should get back a true or false 
+value. If the value is true, then it runs whatever code is between the 
+braces. If the value is false, the computer ignores everything between 
+the braces. Here are two examples:
+
+if (5 > 6) {
+   Serial.println("This will never get printed!");
+}
+
+if (5 < 6) {
+   Serial.println("This will get printed!");
+}
+
+Side note: The placement of whitespace (spaces, tabs, newlines...) is 
+fairly unimportant to the computer's understanding of your code. In 
+order to make the code human readable, it is best to spread it over many 
+lines, seporating out the different elements. Here are a few examples of 
+styles:
+
+if (something) {
+   line 1
+   line 2
+   line 3 ...
+}
+
+if (something) 
+{
+   line 1
+   line 2
+   line 3 ...
+}
+
+if (something)
+{  line 1
+   line 2
+   line 3 ...
+}
+
+if (something)
+   {
+   line 1
+   line 2
+   line 3 ...
+   }
+
+I would recomend looking into "else", "else if" and "switch" statements 
+at some point. While there isn't anything extra that these constructs 
+allow you to do, they do help in writing code that is more consise and 
+efficient. Just make sure you can use if statements well first.
+
+> While loops:
+
+Form: while(){}
+
+Does it look familiar? A while loop has the exact same structure as a if 
+statement. In fact, it works a lot like an if statement. First, it 
+evaluates whatever is in the parentheses, getting a true or false value. 
+If the value is false, the statement is ignored by the computer. If the 
+value is true, the computer runs whatever is in the braces. The only 
+difference between a while loop and an if statement is that after the 
+while loop recieves a true value and runs the code in the braces, it 
+repeats, checking the value again, possibly running the code again...
+
+You could think of a while loop as running the code in the braces over 
+and over again until the condition (the thing in the parentheses) is 
+false. Another way to say that is: while the condition is true, run the 
+code in the braces.
+
+> Variables:
+
+Variables are like containers that hold information. There are several 
+different types of variables. Some can hold big numbers and some can 
+only hold small numbers. Some hold a single letter or symbol (called a 
+character) and some can even hold directions to get to another variable. 
+What kind of information a variable holds is called its type. A variable 
+that holds an integer number is said to have the type "int". A variable 
+that holds a character is said to have type "char". Thats all that you 
+need to know for now.
+
+When the computer finds a variable name in your code, it replaces it 
+with its value.
+
+Before you can use a variable, you must create it. To do this, you write 
+the type of the variable and then its name. Finally, finish it off with 
+a semicolon like so:
+
+int myNumber; 
+char firstLetterOfMyName;
+
+Notice that a variable name cannot contain spaces. It also cannot 
+contain certain characters such as + and -.
+
+Now that you have a variable, you can store information in it. Just 
+remember that a variable can only hold one value at a time. To set 
+myNumber to 5, we use the = operator like so:
+
+myNumber = 5;
+
+Notice that that line also ends with a semicolon. Later in the code, we 
+can set myNumber to another value. The general form for storing a value 
+in a variable is:
+
+variable = value;
+
+The confusing part is that the "=" does not mean the same thing that it 
+means in math. It should be read "is set to" and not "is equal to". 
+There is a different way to check if numbers are equal.
+
+A commonly used shorthand is creating and assigning a variable at the 
+same time. For example, if I want to make another integer variable 
+called anotherNumber and set it to 10, I can write:
+
+int anotherNumber = 10;
+
+Remember that you only need to use the words int or char once. After 
+that, you don't need to use it anymore. Also, don't forget about the 
+semicolons.
+
+WARNING:
+
+If you try to store a really big number in an int, you may end up with a 
+negative number. This is because of the way that the computer internals 
+work. There are other types that can hold larger numbers.
+
+WARNING:
+
+Any numbers after the decimal point will be discarded. There are other 
+datatypes to hold real numbers.
+
+> Operators:
+
+These aren't too complicated. The + and - signs add or subtract two 
+numbers. * is for multiplication and / is for division. You can use 
+parenteses to group expressions but othewise the order of operations 
+holds. Here is an example:
+
+(anotherNumber - myNumber) * 8
+
+Ends up being 40. Another operator is the percent sign (%) and that 
+stands for modulus (dividing but only keeping the remainder). These are 
+all of the arithmetic operators that I know of. Then, there are 
+comparing operators. < and > are less than and greater than. <= and >= 
+are the less than or equal to and the greater than or equal to 
+operators. Because = is already being used, the operator to check for 
+equality is == and the operator to check if two numbers are unequal is 
+!=. All six of these operators go between two numbers and return a true 
+or false. Here are some examples:
+
+5 < 6		True
+5 == 6		False
+5 != 6		True
+3 > 3		False
+3 >= 3		True
+
+These are really useful when writing if statements and while loops. 
+Next, there are operators that change variables. To set myNumber to one 
+more than its current value, I could write:
+
+myNumber = myNumber + 1;
+
+But an easier thing to do would be to use the ++ operator. Just put it 
+after the name of the variable:
+
+myNumber++;
+
+The -- operator sets a variable to one less than its current value (like 
+the opposite of ++).
+
+You have already seen the = operator. All that are left are the logical 
+operators. Putting an ! before a true or false value changes it to the 
+opposite value. For instance:
+
+myNumber == 2		False
+! myNumber == 2		True
+
+The && operator goes between two true or false values. If both of those 
+values are true, the final result is true. Otherwise, the result is 
+false. The || operator also goes between two true or false values. The 
+final result is true if even one of those values is true and false only 
+if both of those values are false. Here is an example:
+
+5 == 6 && 7 > 3		False
+5 == 6 || 7 > 3		True
+5 == 6 || (! 7 > 3)	False
+
+Those are all of the operators that you need to know, but if you want to 
+learn more, you should learn about += and ones like it.
+
+> Function Calls:
+
+A function is something that takes values as inputs, and returns an 
+output (usually based on the inputs). In the next section, you will 
+learn how to make a function, but before that, you should learn to use 
+functions.
+
+The way that you tell a function to run is through a function call. It 
+is very simple. First you write the function's name, then you put an 
+open parenthesis, a closed parenthesis, and a semicolon. To call the add 
+function (which we will define later--its job is to add its two inputs) 
+you would write:
+
+add();
+
+But this call to the add function would not work because it doesn't have 
+any inputs. Passing inputs to a function is easy. Just put the inputs 
+between the parentheses, seporated by commas. If you want to add five 
+and six, you could say:
+
+add(5, 6);
+
+And that would do the trick. Now the function would return 11, so you 
+can think of the computer replacing the "add(5, 6);" with 11.
+
+Now we can print it out on the serial monitor like so:
+
+Serial.println(add(5, 6));
+
+Come to think of it, Serial.println is a function, too. It takes an 
+input--something to print out onto the screen--and returns...what? 
+Serial.println doesn't return any meaningful value. It does what is 
+called a side effect, affecting the surroundings. Another function that 
+you know that does side effects is digitalWrite. digitalWrite only 
+affects the suroundings and doesn't affect the workings of the program.
+
+A note on semicolons:
+
+Semicolons serve to end a statement (so that you can write your entire 
+program on one line, should you so desire). The braces of an if 
+statement and a while loop make it so that they don't need a semicolon, 
+but variable definitions and function calls do need them. But here's the 
+catch--only the outermost function call needs a semicolon. Here is an 
+example section of a program to illustrate that fact:
+
+int n = 5;
+
+while (n > 0) {
+   if (analogRead(a0) == n) {
+      Serial.println("Its your lucky day!");
+   }
+   delay(analogRead(a1));
+   n--;
+}
+
+One last thing to know about is scope. Scope is where a variable has 
+meaning. The general rule has to do with braces: if a variable is 
+created inside of some braces (using its type keyword: int, char--that 
+sort of thing), it does not have meaning outside of them. A variable 
+outside of a set of braces can be accessed inside of that set of braces. 
+Variables that are created outside of any curly braces (i.e. at the top 
+of the program) are called global variables. These variables can be 
+useful, but it is best to use local (inside of braces) variables as much 
+as possible.
+
+> Function Definitions:
+
+Calling functions is really useful and there are a ton of really good 
+ones built in for you to use. But wouldn't it be great if you could make 
+your own functions so that you wouldn't have to repeat yourself so much. 
+Consider the following:
+
+Serial.println(6);
+delay(7);
+Serial.println(23);
+delay(24);
+Serial.println(15);
+delay(16);
+
+You could fix the repetitiveness with a complicated loop, but wouldn't 
+it be much easier and clearer if you could say:
+
+printAndWaitOneMore(6);
+printAndWaitOneMore(23);
+printAndWaitOneMore(15);
+
+It turns out that you can make your own functions! All you need is to 
+tell the computer some information about the function. A function needs 
+to return a value and those values have types. The types are the same as 
+the types for variables and I'll introduce you to one more type right 
+now. It is the type void and it means nothing. Functions that return 
+nothing, such as delay, can be very helpful through side effects. You 
+can make a variable of type void, but that's not very useful. A function 
+also needs a name and a list of inputs. Finally, a function needs a list 
+of instructions and also what to give as an output. To declare a 
+function, you write the return type, the function's name, a pair of 
+parentheses with a list of inputs inside of them, and a pair of braces 
+with the instructions in them. Here is how you would declare the add 
+function:
+
+void doNothingWithTwoInts(int a, int b) {}
+
+So you see: The function returns something of type void (so, nothing). 
+The next part looks a lot like a function call, with the name of the 
+function and then a list of input seporated by commas inside of 
+parentheses. The only real difference is that the inputs have types 
+attatched to them. The braces don't have anything in them, so the 
+function, when called, doesn't do anything. Now, lets make a function 
+that actually does something. The function will take two numbers (of 
+type int) and return their sum. The function will return an int, be 
+called add, take in two ints called a and b, and return a + b. Here is 
+it written out in code:
+
+int add(int a, int b) {
+   return a + b;
+}
+
+This definition includes one last statement that I haven't talked about, 
+which is the return statement. It goes inside of function definitions 
+and tells it what value, not surprisingly, to return. A return statement 
+completely stops the function, so don't expect any code after the return 
+statement to run. A return statement consists of the word return, a 
+value to return, and a semicolon to finish it off. Here would be the 
+example code for printAndWaitOneMore:
+
+void printAndWaitOneMore(int x) {
+   Serial.println(x);
+   delay(x + 1);
+}
+
+It returns nothing, is called printAndWaitOneMore, it takes in an input 
+called x, with type int and it runs those two instructions inside of the 
+braces.
+
+A few things to watch out for: You are not allowed to define a function 
+inside of a function. Also, any variables passed as inputs to a function 
+are merely copies. For instance, if I made the function called 
+addOneMore defined as so:
+
+void addOneMore(int x) {
+   x = x + 1;
+}
+
+and then I had a section of my program that looked like this:
+
+int num = 5;
+addOneMore(num);
+Serial.println(num);
+
+it would print out 5. If you want to change variable like that, I 
+suggest that you learn pointers.
+
+> Program Structure and Execution:
+
+A program must contain two functions: one called setup and one called 
+loop. What happens when you run the code is that the arduino program 
+turns all of the functions into machine code that the computer can 
+understand. When it actually has to run the program, the computer 
+specifically looks for a function called setup. Once it finds it, it 
+runs setup once. Then, the computer looks for the function called loop. 
+Once it finds that funciton, it runs it over and over again. You can 
+think of it like so:
+
+setup();
+while (true) {
+   loop();
+}
+
+Any code (aside from variable definitions and function definitions) 
+outside of the setup and loop functions will not run.
+
+Now don't just read this--go and program! Once you have the basics, you 
+can only learn by doing!
