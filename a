@@ -1,18 +1,21 @@
-Terminology:
+Preamble: I made this document for anyone to use. It is designed to help 
+facilitate the learning of Arduino programming, but can be slightly 
+modified for any C-derived language.
 
-The "{" and "}" symbols are known as braces (like the things that go on 
-teeth).
+Note:
+Braces refer to the "{" and "}" symbols. Don't confuse them with the 
+things that go on teeth
 
 > If statements:
 
 Form: if(){}
 
 Put something between the parentheses and something between the braces. 
-When the computer gets to that part of the program, it first runs 
+When it is time for the computer to fun the if statement, it first runs 
 whatever is in the parentheses. It should get back a true or false 
-value. If the value is true, then it runs whatever code is between the 
-braces. If the value is false, the computer ignores everything between 
-the braces. Here are two examples:
+value. If the value is true, then it runs whatever code is in between 
+the braces. If the value is false, the computer ignores everything 
+between the braces. Here are two examples:
 
 if (5 > 6) {
    Serial.println("This will never get printed!");
@@ -26,7 +29,7 @@ Side note: The placement of whitespace (spaces, tabs, newlines...) is
 fairly unimportant to the computer's understanding of your code. In 
 order to make the code human readable, it is best to spread it over many 
 lines, seporating out the different elements. Here are a few examples of 
-styles:
+styles that you can use to format your code:
 
 if (something) {
    line 1
@@ -57,7 +60,7 @@ if (something)
 I would recomend looking into "else", "else if" and "switch" statements 
 at some point. While there isn't anything extra that these constructs 
 allow you to do, they do help in writing code that is more consise and 
-efficient. Just make sure you can use if statements well first.
+efficient. Just make sure that you can use if statements well first.
 
 > While loops:
 
@@ -89,7 +92,7 @@ that holds a character is said to have type "char". Thats all that you
 need to know for now.
 
 When the computer finds a variable name in your code, it replaces it 
-with its value.
+with its current value.
 
 Before you can use a variable, you must create it. To do this, you write 
 the type of the variable and then its name. Finally, finish it off with 
@@ -115,11 +118,11 @@ variable = value;
 
 The confusing part is that the "=" does not mean the same thing that it 
 means in math. It should be read "is set to" and not "is equal to". 
-There is a different way to check if numbers are equal.
+There is a different way to check if two numbers are equal.
 
-A commonly used shorthand is creating and assigning a variable at the 
-same time. For example, if I want to make another integer variable 
-called anotherNumber and set it to 10, I can write:
+A commonly used shorthand creates and assigns a variable to a value at 
+the same time. For example, if I want to make another integer variable 
+called anotherNumber and immediately set it to 10, I can write:
 
 int anotherNumber = 10;
 
@@ -133,17 +136,26 @@ If you try to store a really big number in an int, you may end up with a
 negative number. This is because of the way that the computer internals 
 work. There are other types that can hold larger numbers.
 
-WARNING:
-
-Any numbers after the decimal point will be discarded. There are other 
+Also, any numbers after the decimal point will be discarded. There are other 
 datatypes to hold real numbers.
+
+One last thing to know about is scope. Scope is where a variable has 
+meaning. The general rule has to do with braces: if a variable is 
+created inside of a pair of braces (as in initialized with its type 
+keyword: int, char--that sort of thing), it does not have meaning 
+outside of those braces. A variable outside of a pair of braces can be 
+accessed inside of that pair of braces. Variables that are created 
+outside of any braces (i.e. at the top of the program) are called global 
+variables because they can be accessed at any place in your program 
+(anywhere in the world). These variables can be useful, but it is best 
+to use local (inside of braces) variables as much as possible.
 
 > Operators:
 
 These aren't too complicated. The + and - signs add or subtract two 
-numbers. * is for multiplication and / is for division. You can use 
-parenteses to group expressions but othewise the order of operations 
-holds. Here is an example:
+numbers in the regular way. * is for multiplication and / is for 
+division. You can use parenteses to group expressions but othewise the 
+order of operations holds. Here is an example:
 
 (anotherNumber - myNumber) * 8
 
@@ -155,7 +167,8 @@ are the less than or equal to and the greater than or equal to
 operators. Because = is already being used, the operator to check for 
 equality is == and the operator to check if two numbers are unequal is 
 !=. All six of these operators go between two numbers and return a true 
-or false. Here are some examples:
+or false value (perfect for using in the parentheses of if statements 
+and while loops). Here are some examples:
 
 5 < 6		True
 5 == 6		False
@@ -163,7 +176,6 @@ or false. Here are some examples:
 3 > 3		False
 3 >= 3		True
 
-These are really useful when writing if statements and while loops. 
 Next, there are operators that change variables. To set myNumber to one 
 more than its current value, I could write:
 
@@ -195,25 +207,25 @@ if both of those values are false. Here is an example:
 5 == 6 || (! 7 > 3)	False
 
 Those are all of the operators that you need to know, but if you want to 
-learn more, you should learn about += and ones like it.
+learn more, you should research += and ones like it.
 
 > Function Calls:
 
 A function is something that takes values as inputs, and returns an 
 output (usually based on the inputs). In the next section, you will 
 learn how to make a function, but before that, you should learn to use 
-functions.
+functions because there are some really useful ones already built in.
 
 The way that you tell a function to run is through a function call. It 
 is very simple. First you write the function's name, then you put an 
-open parenthesis, a closed parenthesis, and a semicolon. To call the add 
+open parenthesis, a close parenthesis, and a semicolon. To call the add 
 function (which we will define later--its job is to add its two inputs) 
 you would write:
 
 add();
 
 But this call to the add function would not work because it doesn't have 
-any inputs. Passing inputs to a function is easy. Just put the inputs 
+any inputs. Passing inputs into a function is easy. Just put the inputs 
 between the parentheses, seporated by commas. If you want to add five 
 and six, you could say:
 
@@ -230,7 +242,7 @@ Come to think of it, Serial.println is a function, too. It takes an
 input--something to print out onto the screen--and returns...what? 
 Serial.println doesn't return any meaningful value. It does what is 
 called a side effect, affecting the surroundings. Another function that 
-you know that does side effects is digitalWrite. digitalWrite only 
+you know that uses side effects is digitalWrite. digitalWrite only 
 affects the suroundings and doesn't affect the workings of the program.
 
 A note on semicolons:
@@ -245,22 +257,12 @@ example section of a program to illustrate that fact:
 int n = 5;
 
 while (n > 0) {
-   if (analogRead(a0) == n) {
+   if (analogRead(A0) == n) {
       Serial.println("Its your lucky day!");
    }
-   delay(analogRead(a1));
+   delay(analogRead(A1));
    n--;
 }
-
-One last thing to know about is scope. Scope is where a variable has 
-meaning. The general rule has to do with braces: if a variable is 
-created inside of some braces (using its type keyword: int, char--that 
-sort of thing), it does not have meaning outside of them. A variable 
-outside of a set of braces can be accessed inside of that set of braces. 
-Variables that are created outside of any curly braces (i.e. at the top 
-of the program) are called global variables. These variables can be 
-useful, but it is best to use local (inside of braces) variables as much 
-as possible.
 
 > Function Definitions:
 
@@ -283,32 +285,34 @@ printAndWaitOneMore(6);
 printAndWaitOneMore(23);
 printAndWaitOneMore(15);
 
-It turns out that you can make your own functions! All you need is to 
-tell the computer some information about the function. A function needs 
-to return a value and those values have types. The types are the same as 
-the types for variables and I'll introduce you to one more type right 
-now. It is the type void and it means nothing. Functions that return 
-nothing, such as delay, can be very helpful through side effects. You 
-can make a variable of type void, but that's not very useful. A function 
-also needs a name and a list of inputs. Finally, a function needs a list 
-of instructions and also what to give as an output. To declare a 
-function, you write the return type, the function's name, a pair of 
-parentheses with a list of inputs inside of them, and a pair of braces 
-with the instructions in them. Here is how you would declare the add 
-function:
+No need to contact the people who made the programming language and tell 
+them that you need a printAndWaitOneMore function--it turns out that you 
+can make functions yourself! All you need is to tell the computer some 
+information about the function. A function needs to return a value and 
+those values all have types. The types are the same as the types for 
+variables and I'll introduce you to one more type right now. It is the 
+type void and it means nothing. Functions that return nothing, such as 
+digitalWrite, can be very helpful through side effects. You can make a 
+variable of type void, but that's not very useful. The second thing that 
+a function needs a name. It also needs a list of inputs. Finally, a 
+function needs a list of instructions and also what to give as an 
+output. To declare a function, you write the return type, the function's 
+name, a pair of parentheses with a list of inputs inside of them, and a 
+pair of braces with the instructions in them. Here is how you would 
+declare the add function:
 
 void doNothingWithTwoInts(int a, int b) {}
 
 So you see: The function returns something of type void (so, nothing). 
 The next part looks a lot like a function call, with the name of the 
-function and then a list of input seporated by commas inside of 
-parentheses. The only real difference is that the inputs have types 
-attatched to them. The braces don't have anything in them, so the 
-function, when called, doesn't do anything. Now, lets make a function 
-that actually does something. The function will take two numbers (of 
-type int) and return their sum. The function will return an int, be 
-called add, take in two ints called a and b, and return a + b. Here is 
-it written out in code:
+function and then a list of inputs seporated by commas inside of 
+parentheses. The only real difference is that the inputs have their 
+types written before them. In this particular example, the braces don't 
+have anything in them, so the function, when called, doesn't do 
+anything. Now, lets make a function that actually does something. The 
+function will take two numbers (of type int) and return their sum. The 
+function will return an int, be called add, take in two ints called a 
+and b, and return a + b. Here is it written out in code:
 
 int add(int a, int b) {
    return a + b;
@@ -319,8 +323,10 @@ which is the return statement. It goes inside of function definitions
 and tells it what value, not surprisingly, to return. A return statement 
 completely stops the function, so don't expect any code after the return 
 statement to run. A return statement consists of the word return, a 
-value to return, and a semicolon to finish it off. Here would be the 
-example code for printAndWaitOneMore:
+value to return, and a semicolon to finish it off. If you want to use a 
+return statement in a function of type void, you can just write "return;" 
+because no value needs to be returned. Here would be the example code 
+for printAndWaitOneMore:
 
 void printAndWaitOneMore(int x) {
    Serial.println(x);
@@ -329,7 +335,9 @@ void printAndWaitOneMore(int x) {
 
 It returns nothing, is called printAndWaitOneMore, it takes in an input 
 called x, with type int and it runs those two instructions inside of the 
-braces.
+braces. There is no return statement at the end of this function, so the 
+computer inserts one for you when it compiles (translates into machine 
+language) your code.
 
 A few things to watch out for: You are not allowed to define a function 
 inside of a function. Also, any variables passed as inputs to a function 
