@@ -1,9 +1,4 @@
-Preamble: I made this document for anyone to use. It is designed to help 
-facilitate the learning of Arduino programming, but can be slightly 
-modified for any C-derived language.
-
-Note:
-Braces refer to the "{" and "}" symbols. Don't confuse them with the 
+Note: Braces refer to the "{" and "}" symbols. Don't confuse them with the 
 things that go on teeth
 
 > If statements:
