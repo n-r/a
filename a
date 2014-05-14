@@ -11,7 +11,7 @@ things that go on teeth
 Form: if(){}
 
 Put something between the parentheses and something between the braces. 
-When it is time for the computer to fun the if statement, it first runs 
+When it is time for the computer to run the if statement, it first runs 
 whatever is in the parentheses. It should get back a true or false 
 value. If the value is true, then it runs whatever code is in between 
 the braces. If the value is false, the computer ignores everything 
